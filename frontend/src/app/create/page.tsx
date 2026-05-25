@@ -174,7 +174,7 @@ export default function CreateAssignmentPage() {
 
   return (
     <>
-      <TopBar title="Assignment" onBack={() => router.push('/')} />
+      <TopBar title="Create Assignment" onBack={() => router.push('/')} />
 
       {isGenerating && <GeneratingOverlay progress={generationProgress} />}
 

@@ -151,7 +151,7 @@ export default function PaperPage() {
   if (isLoading && !generatedPaper) {
     return (
       <>
-        <TopBar title="Create New" onBack={() => router.push('/')} />
+        <TopBar title="Generated Assessment" onBack={() => router.push('/')} showMobileTitle={false} />
         <div className="page-content">
           <div className="page-loading">
             <div className="spinner" />
@@ -166,7 +166,7 @@ export default function PaperPage() {
   if (!paper) {
     return (
       <>
-        <TopBar title="Create New" onBack={() => router.push('/')} />
+        <TopBar title="Generated Assessment" onBack={() => router.push('/')} showMobileTitle={false} />
         <div className="page-content">
           <div className="empty-state">
             <div className="empty-state-title">No paper generated yet</div>
@@ -186,7 +186,7 @@ export default function PaperPage() {
 
   return (
     <>
-      <TopBar title="Create New" onBack={() => router.push('/')} />
+      <TopBar title="Generated Assessment" onBack={() => router.push('/')} showMobileTitle={false} />
 
       {isGenerating && <GeneratingOverlay progress={generationProgress} />}
 

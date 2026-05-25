@@ -65,7 +65,7 @@ export default function AssignmentsPage() {
 
   return (
     <>
-      <TopBar title="Assignment" />
+      <TopBar title="Assignments" showBackButton={false} showMobileTitle={assignments.length > 0} />
 
       {error && <div className="error-toast">{error}</div>}
 
