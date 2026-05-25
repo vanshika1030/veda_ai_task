@@ -76,7 +76,7 @@ export default function PaperPage() {
     // Polling fallback
     const pollInterval = setInterval(async () => {
       try {
-        const res = await fetch(`http://localhost:3001/api/assignments/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'}/assignments/${id}`);
         const data = await res.json();
         if (data.status === 'completed' && data.generatedPaper) {
           clearInterval(pollInterval);

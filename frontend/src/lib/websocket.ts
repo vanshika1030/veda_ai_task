@@ -9,7 +9,10 @@ class WebSocketClient {
   private url: string;
 
   constructor(url?: string) {
-    this.url = url || 'ws://localhost:3001/ws';
+    const defaultUrl = typeof window !== 'undefined'
+      ? process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:3001/ws'
+      : 'ws://localhost:3001/ws';
+    this.url = url || defaultUrl;
   }
 
   connect(): void {
