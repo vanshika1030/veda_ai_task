@@ -45,7 +45,7 @@ export function initializeQueue(): void {
         wsManager.broadcast('generation:progress', { assignmentId, progress: 30 });
 
         // Generate paper
-        const paper = await generateQuestionPaper(assignment.toObject());
+        const paper = await generateQuestionPaper(assignment.toObject() as any);
 
         await job.updateProgress(80);
         wsManager.broadcast('generation:progress', { assignmentId, progress: 80 });
@@ -121,7 +121,7 @@ async function runInlineGeneration(assignmentId: string): Promise<void> {
 
     wsManager.broadcast('generation:progress', { assignmentId, progress: 30 });
 
-    const paper = await generateQuestionPaper(assignment.toObject());
+    const paper = await generateQuestionPaper(assignment.toObject() as any);
 
     wsManager.broadcast('generation:progress', { assignmentId, progress: 80 });
 
