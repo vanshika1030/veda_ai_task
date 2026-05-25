@@ -1758,6 +1758,7 @@ img {
   100% { background-position: 200px 0; }
 }
 
+@media (max-width: 768px) {
   .paper-meta-row {
     flex-direction: column;
     gap: 4px;
@@ -1776,7 +1777,6 @@ img {
     min-width: auto;
   }
 }
-
 @media (max-width: 480px) {
   .page-title {
     font-size: 18px;
