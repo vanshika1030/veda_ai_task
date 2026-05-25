@@ -17,12 +17,17 @@ export function initializeQueue(): void {
   const redisClient = getRedisClient();
   if (!redisClient) return;
 
-  const connection = {
-    host: redisClient.options.host || 'localhost',
-    port: redisClient.options.port || 6379,
+  const redisURL = process.env.REDIS_URL || 'redis://localhost:6379';
+  const connectionOptions = {
+    maxRetriesPerRequest: null,
+    tls: redisURL.startsWith('rediss://') ? { rejectUnauthorized: false } : undefined
   };
 
-  generationQueue = new Queue('question-generation', { connection });
+  const Redis = require('ioredis');
+
+  generationQueue = new Queue('question-generation', { 
+    connection: new Redis(redisURL, connectionOptions) 
+  });
 
   generationWorker = new Worker(
     'question-generation',
