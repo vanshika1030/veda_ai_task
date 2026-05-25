@@ -33,6 +33,11 @@ export const connectRedis = async (): Promise<void> => {
         return Math.min(times * 200, 2000);
       },
       lazyConnect: true,
+      tls: redisURL.startsWith('rediss://') ? { rejectUnauthorized: false } : undefined
+    });
+
+    redisClient.on('error', (err) => {
+      console.warn('Redis connection error (handled):', err.message);
     });
 
     await redisClient.connect();
