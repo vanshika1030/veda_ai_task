@@ -103,16 +103,8 @@ export function initializeQueue(): void {
 }
 
 export async function addGenerationJob(assignmentId: string): Promise<string> {
-  if (generationQueue && isRedisAvailable()) {
-    const job = await generationQueue.add('generate', { assignmentId }, {
-      removeOnComplete: { count: 100 },
-      removeOnFail: { count: 50 },
-    });
-    return job.id || assignmentId;
-  }
-
-  // Inline fallback when Redis is not available
-  console.log('Running generation inline (no Redis)');
+  // Force inline generation for the deployed demo to avoid free-tier Redis timeouts hanging the queue
+  console.log('Running generation inline (bypassing Redis queue for reliability)');
   runInlineGeneration(assignmentId);
   return assignmentId;
 }
