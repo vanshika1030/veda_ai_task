@@ -91,7 +91,11 @@ export default function PaperPage() {
       } catch {}
     }, 3000);
 
+
+    
+
     setTimeout(() => clearInterval(pollInterval), 120000);
+
   };
 
   const handleDownloadPDF = async () => {
